@@ -5,8 +5,8 @@ export interface PortfolioItem {
   id: string;
   title: string;
   category: VideoCategory;
-  thumbnail: string; // Deprecated but kept for backward compatibility if needed, or used as images[0]
-  images: string[]; // List of all images including main thumbnail
+  thumbnail: string;
+  images: string[];
   description: string;
   purpose: string;
   solution: string;
@@ -15,16 +15,59 @@ export interface PortfolioItem {
 }
 
 export interface Package {
+  id: string;
   name: string;
   price: string;
   description: string;
   features: string[];
 }
 
-export interface Inquiry {
+export interface ProcessStep {
+  id: string;
+  title: string;
+  desc: string;
+}
+
+export interface FAQItem {
+  id: string;
+  q: string;
+  a: string;
+}
+
+export interface SiteConfig {
+  pricing: {
+    title: string;
+    subtitle: string;
+    packages: Package[];
+  };
+  process: {
+    title: string;
+    subtitle: string;
+    steps: ProcessStep[];
+  };
+  faq: {
+    title: string;
+    items: FAQItem[];
+  };
+  contact: {
+    title: string;
+    subtitle: string;
+    description: string;
+  };
+  notifications: {
+    receiverEmail: string;
+    isEnabled: boolean;
+  };
+}
+
+export interface InquiryRecord {
+  id: string;
   purpose: string;
   type: string;
   date: string;
   budget: string;
+  name: string;
   contact: string;
+  createdAt: string;
+  status: '신규' | '확인중' | '완료';
 }
